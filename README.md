@@ -59,7 +59,8 @@ The application displays:
 * detected vehicles with bounding boxes
 * <img width="1017" height="576" alt="Screenshot from 2026-08-24 20-59-47" src="https://github.com/user-attachments/assets/9ee16d52-628f-4068-8844-a62b04b8d8bc" />
 * the binary motion mask
-<img width="1017" height="576" alt="Screenshot from 2026-08-24 20-59-31" src="https://github.com/user-attachments/assets/a6bbeb5b-956b-42f0-8aa2-226876f90c20" />
+* <img width="1017" height="576" alt="Screenshot from 2026-08-24 20-59-31" src="https://github.com/user-attachments/assets/a6bbeb5b-956b-42f0-8aa2-226876f90c20" />
+
 
 
 ## 📚 Technologies
