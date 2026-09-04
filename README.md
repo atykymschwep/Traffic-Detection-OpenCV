@@ -1,21 +1,22 @@
 # 🚗 Traffic Detection with OpenCV (C++)
 
-A lightweight C++ application for real-time vehicle detection using **OpenCV**, background subtraction, and morphological image processing.
-
-This project demonstrates a classical computer vision approach to traffic detection. It works well in suitable conditions, but it is not a perfect vehicle detector and may produce false positives or miss vehicles depending on lighting, shadows, camera movement, and scene complexity.
+Real-time vehicle detection, tracking, and traffic counting using **OpenCV DNN** and a **VisDrone ONNX model**.
 
 ## ✨ Features
 
-* **MOG2 Background Subtraction** — detects moving vehicles.
-* **Morphological Filtering** — removes noise using `MORPH_OPEN` and `MORPH_CLOSE`.
-* **Contour Detection** — filters objects by bounding box area.
-* **Real-Time Visualization** — shows the original video and binary motion mask side by side.
+* **Vehicle Detection** — detects vehicles using a VisDrone ONNX model.
+* **Vehicle Filtering** — detects only cars, vans, trucks, and buses.
+* **Non-Maximum Suppression** — removes duplicate detections.
+* **Vehicle Tracking** — assigns a unique ID to each vehicle and tracks it between frames.
+* **Traffic Counting** — counts vehicles moving **UP** and **LEFT** across counting lines.
+* **Real-Time Visualization** — displays vehicle bounding boxes, IDs, counting lines, and traffic statistics.
 
 ## 🛠 Requirements
 
 * C++17
 * OpenCV 4.x
 * CMake 3.10+
+* OpenCV DNN support
 
 ## 🚀 Build & Run
 
@@ -23,16 +24,17 @@ This project demonstrates a classical computer vision approach to traffic detect
 
 ```bash
 git clone https://github.com/atykymschwep/Traffic-Detection-OpenCV.git
+
 cd Traffic-Detection-OpenCV
 ```
 
+### 2. Add the video and model
 
-### 2. Add the video
-
-Place your traffic video in the project root:
+Place the required files in the project root:
 
 ```text
 traffic_video.mp4
+visdrone_small.onnx
 ```
 
 ### 3. Build
@@ -45,27 +47,51 @@ cmake ..
 make
 ```
 
-### 4. Run 
-
+### 4. Run
 
 ```bash
-./traffic_detection
+./TrafficCounter
 ```
+
+Press **ESC** to exit.
 
 ## 📷 Example
 
-The application displays:
+The application displays detected vehicles with bounding boxes and unique IDs, counting lines, and real-time traffic statistics.
 
-* detected vehicles with bounding boxes
-* <img width="1017" height="576" alt="Screenshot from 2026-08-24 20-59-47" src="https://github.com/user-attachments/assets/9ee16d52-628f-4068-8844-a62b04b8d8bc" />
-* the binary motion mask
-* <img width="1017" height="576" alt="Screenshot from 2026-08-24 20-59-31" src="https://github.com/user-attachments/assets/a6bbeb5b-956b-42f0-8aa2-226876f90c20" />
+<img width="1017" height="576" alt="Vehicle detection and tracking" src="https://github.com/user-attachments/assets/9ee16d52-628f-4068-8844-a62b04b8d8bc" />
 
+Vehicles are counted when they cross the configured horizontal or vertical line.
 
+<img width="1017" height="576" alt="Traffic counting" src="https://github.com/user-attachments/assets/a6bbeb5b-956b-42f0-8aa2-226876f90c20" />
+
+## 📊 Tracking & Counting
+
+The tracker uses a nearest-neighbor approach to match vehicles between frames.
+
+Default parameters:
+
+```text
+Maximum tracking distance: 60 px
+Maximum lost frames:       10
+Horizontal line (UP):      Y = 400
+Vertical line (LEFT):      X = 345
+```
+
+A vehicle is counted only once for each direction.
+
+## 🎯 Detection
+
+```text
+Confidence threshold: 0.20
+NMS threshold:         0.35
+```
 
 ## 📚 Technologies
 
 * **C++17**
 * **OpenCV**
+* **OpenCV DNN**
 * **CMake**
-* **MOG2 Background Subtraction**
+* **VisDrone ONNX**
+* **Nearest-Neighbor Tracking**
