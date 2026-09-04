@@ -59,11 +59,10 @@ Press **ESC** to exit.
 
 The application displays detected vehicles with bounding boxes and unique IDs, counting lines, and real-time traffic statistics.
 
-<img width="1017" height="576" alt="Vehicle detection and tracking" src="https://github.com/user-attachments/assets/9ee16d52-628f-4068-8844-a62b04b8d8bc" />
-
+<img width="1026" height="580" alt="Screenshot from 2026-09-04 18-43-01" src="https://github.com/user-attachments/assets/0f9e3d86-fbdb-4198-8f03-e3e7af35a934" />
 Vehicles are counted when they cross the configured horizontal or vertical line.
 
-<img width="1017" height="576" alt="Traffic counting" src="https://github.com/user-attachments/assets/a6bbeb5b-956b-42f0-8aa2-226876f90c20" />
+<img width="1026" height="580" alt="Screenshot from 2026-09-04 18-43-12" src="https://github.com/user-attachments/assets/dc740a5d-41fd-42b1-b0f7-31d013859e6a" />
 
 ## 📊 Tracking & Counting
 
